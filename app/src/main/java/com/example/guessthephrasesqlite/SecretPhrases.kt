@@ -22,10 +22,14 @@ class SecretPhrases : AppCompatActivity() {
         edphrase = findViewById(R.id.edphrase)
         btnAdd = findViewById(R.id.btnAdd)
         btnAdd.setOnClickListener {
-            dbhlr.savedata(edphrase.text.toString())
-            println(edphrase.text.toString())
-            edphrase.text.clear()
-            Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show()
+            if(edphrase.text.isEmpty())
+                Toast.makeText(this, "Fill the fields please", Toast.LENGTH_SHORT).show()
+            else {
+                dbhlr.savedata(edphrase.text.toString())
+                println(edphrase.text.toString())
+                edphrase.text.clear()
+                Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show()
+            }
         }
         //add some phrase
         //var phraseList = arrayListOf<String>("hello world","I am developer","I love Kotlin")
